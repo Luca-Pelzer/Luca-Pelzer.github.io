@@ -5,7 +5,7 @@ draft: false
 description: "Eine Echtzeit-Multiplayer-Lernplattform für die IHK-Prüfungsvorbereitung (Fachinformatiker) mit 5 Spielmodi, Socket.io Multiplayer und servergespeichertem Fortschritt."
 tags: ["Next.js", "TypeScript", "Socket.io", "Tailwind CSS", "Multiplayer", "Bildung", "Echtzeit"]
 image: "/images/projects/learn-together.svg"
-github: "https://github.com/engelswtf/learn-together"
+github: "https://github.com/Luca-Pelzer/learn-together"
 demo: "https://learn.engels.wtf"
 featured: true
 weight: 2

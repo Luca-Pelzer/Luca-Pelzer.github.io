@@ -11,7 +11,7 @@ I'm always happy to connect with fellow AI enthusiasts, answer questions about m
 ### Find Me Online
 
 - **Email**: [luca@engels.wtf](mailto:luca@engels.wtf)
-- **GitHub**: [engelswtf](https://github.com/engelswtf)
+- **GitHub**: [Luca-Pelzer](https://github.com/Luca-Pelzer)
 - **Discord**: [engels.](https://discord.com/users/262327058317836300)
 
 ### About Responses

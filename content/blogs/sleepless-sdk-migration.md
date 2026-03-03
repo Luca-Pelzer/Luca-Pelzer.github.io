@@ -7,7 +7,7 @@ categories: ["AI", "Technical"]
 description: "How we migrated from command-line execution to programmatic SDK calls to hide an internal agent from the UI, solving a tricky architecture problem in sleepless-opencode."
 ---
 
-I was building [sleepless-opencode](https://github.com/engelswtf/sleepless-opencode), a 24/7 AI agent daemon that processes coding tasks in the background. Think of it as a task queue where you submit work via Discord, and an AI agent executes it while you sleep.
+I was building [sleepless-opencode](https://github.com/Luca-Pelzer/sleepless-opencode), a 24/7 AI agent daemon that processes coding tasks in the background. Think of it as a task queue where you submit work via Discord, and an AI agent executes it while you sleep.
 
 The daemon uses a specialized agent called `sleepless-executor` to run tasks. This agent is purely internal—it's not meant for direct user interaction. Users should never select it manually from the agent picker.
 
@@ -181,4 +181,4 @@ If you're building OpenCode integrations and need programmatic agent control, sk
 
 **Want to try sleepless-opencode?**
 
-Check it out on [GitHub](https://github.com/engelswtf/sleepless-opencode).
+Check it out on [GitHub](https://github.com/Luca-Pelzer/sleepless-opencode).

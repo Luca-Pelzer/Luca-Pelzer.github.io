@@ -5,7 +5,7 @@ draft: false
 description: "A comprehensive homelab setup running Proxmox VE with multiple LXC containers and VMs for various self-hosted services."
 tags: ["Proxmox", "LXC", "Docker", "Networking", "Infrastructure"]
 image: "/images/projects/homelab.svg"
-github: "https://github.com/engelswtf"
+github: "https://github.com/Luca-Pelzer"
 demo: ""
 featured: true
 weight: 1

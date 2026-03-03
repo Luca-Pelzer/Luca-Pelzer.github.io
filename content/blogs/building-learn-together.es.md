@@ -235,7 +235,7 @@ La app está en vivo en **[learn.engels.wtf](https://learn.engels.wtf)**
 
 Solo ingresa un nombre y empieza a aprender. No se necesita cuenta, el progreso se guarda automáticamente.
 
-Código fuente: [github.com/engelswtf/learn-together](https://github.com/engelswtf/learn-together)
+Código fuente: [github.com/Luca-Pelzer/learn-together](https://github.com/Luca-Pelzer/learn-together)
 
 ---
 

@@ -7,7 +7,7 @@ categories: ["AI", "Technical"]
 description: "Wie wir von Kommandozeilen-Ausführung zu programmatischen SDK-Aufrufen migriert haben, um einen internen Agenten vor der UI zu verstecken und ein kniffliges Architekturproblem in sleepless-opencode zu lösen."
 ---
 
-Ich habe [sleepless-opencode](https://github.com/engelswtf/sleepless-opencode) gebaut, einen 24/7-KI-Agent-Daemon, der Coding-Tasks im Hintergrund verarbeitet. Stell es dir wie eine Task-Queue vor, bei der du Arbeit über Discord einreichst und ein KI-Agent sie ausführt, während du schläfst.
+Ich habe [sleepless-opencode](https://github.com/Luca-Pelzer/sleepless-opencode) gebaut, einen 24/7-KI-Agent-Daemon, der Coding-Tasks im Hintergrund verarbeitet. Stell es dir wie eine Task-Queue vor, bei der du Arbeit über Discord einreichst und ein KI-Agent sie ausführt, während du schläfst.
 
 Der Daemon verwendet einen spezialisierten Agenten namens `sleepless-executor`, um Tasks auszuführen. Dieser Agent ist rein intern gedacht – er soll nicht für direkte Benutzerinteraktion verwendet werden. Benutzer sollten ihn niemals manuell aus dem Agent-Picker auswählen.
 
@@ -181,4 +181,4 @@ Wenn du OpenCode-Integrationen baust und programmatische Agent-Kontrolle brauchs
 
 **Willst du sleepless-opencode ausprobieren?**
 
-Schau es dir auf [GitHub](https://github.com/engelswtf/sleepless-opencode) an.
+Schau es dir auf [GitHub](https://github.com/Luca-Pelzer/sleepless-opencode) an.

@@ -110,7 +110,7 @@ WorkingDirectory=/var/www/engels-blog
 ExecStart=/usr/local/bin/hugo server \
   --bind 0.0.0.0 \
   --port 1313 \
-  --baseURL https://engelswtf.github.io \
+  --baseURL https://luca-pelzer.github.io \
   --appendPort=false \
   --environment production \
   --disableLiveReload
@@ -142,7 +142,7 @@ www.engels.wtf {
 }
 
 engels.wtf {
-    redir https://engelswtf.github.io{uri} permanent
+    redir https://luca-pelzer.github.io{uri} permanent
 }
 ```
 

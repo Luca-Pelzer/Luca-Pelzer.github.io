@@ -139,7 +139,7 @@ Maybe. But here's what I keep coming back to:
 
 If you want to see what I've actually built:
 
-- **[ai-prompts repository](https://github.com/engelswtf/ai-prompts)** — All 110 prompts and 28 agents, organized and documented
+- **[ai-prompts repository](https://github.com/Luca-Pelzer/ai-prompts)** — All 110 prompts and 28 agents, organized and documented
 - **Previous posts** — The [multi-agent workflow post](/blogs/multiagent-ai-workflow/) goes deeper on the technical architecture
 - **This blog** — Where I'll keep documenting what I learn
 

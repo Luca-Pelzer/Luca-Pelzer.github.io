@@ -5,7 +5,7 @@ draft: false
 description: "A real-time multiplayer learning platform for German IT exam preparation (IHK Fachinformatiker) with 5 game modes, Socket.io multiplayer, and server-synced progress."
 tags: ["Next.js", "TypeScript", "Socket.io", "Tailwind CSS", "Multiplayer", "Education", "Real-time"]
 image: "/images/projects/learn-together.svg"
-github: "https://github.com/engelswtf/learn-together"
+github: "https://github.com/Luca-Pelzer/learn-together"
 demo: "https://learn.engels.wtf"
 featured: true
 weight: 2

@@ -324,7 +324,7 @@ That's maybe 50 lines. Start there, then expand based on what breaks.
 ## Where to Find Examples
 
 All 28 of my agents are open source:
-- **[ai-prompts repository](https://github.com/engelswtf/ai-prompts)** - Browse the full collection
+- **[ai-prompts repository](https://github.com/Luca-Pelzer/ai-prompts)** - Browse the full collection
 
 The agents are organized into packs:
 - **Infrastructure** (7): Storage, monitoring, security, networking, databases

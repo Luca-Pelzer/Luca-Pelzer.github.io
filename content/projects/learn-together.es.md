@@ -5,7 +5,7 @@ draft: false
 description: "Una plataforma de aprendizaje multijugador en tiempo real para la preparación de exámenes de TI alemanes (IHK Fachinformatiker) con 5 modos de juego, multijugador Socket.io y progreso sincronizado."
 tags: ["Next.js", "TypeScript", "Socket.io", "Tailwind CSS", "Multijugador", "Educación", "Tiempo Real"]
 image: "/images/projects/learn-together.svg"
-github: "https://github.com/engelswtf/learn-together"
+github: "https://github.com/Luca-Pelzer/learn-together"
 demo: "https://learn.engels.wtf"
 featured: true
 weight: 2

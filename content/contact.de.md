@@ -11,7 +11,7 @@ Ich freue mich immer, mich mit anderen KI-Enthusiasten zu verbinden, Fragen zu m
 ### Finde mich online
 
 - **E-Mail**: [luca@engels.wtf](mailto:luca@engels.wtf)
-- **GitHub**: [engelswtf](https://github.com/engelswtf)
+- **GitHub**: [Luca-Pelzer](https://github.com/Luca-Pelzer)
 - **Discord**: [engels.](https://discord.com/users/262327058317836300)
 
 ### Über Antworten

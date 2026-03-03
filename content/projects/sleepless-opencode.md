@@ -5,7 +5,7 @@ draft: false
 description: "24/7 AI agent daemon that processes coding tasks while you sleep. Submit via Discord, Slack, or CLI - get notified when complete."
 tags: ["OpenCode", "AI", "Discord", "Automation", "TypeScript", "Claude"]
 image: "/images/projects/sleepless.svg"
-github: "https://github.com/engelswtf/sleepless-opencode"
+github: "https://github.com/Luca-Pelzer/sleepless-opencode"
 demo: ""
 featured: true
 weight: 0
@@ -32,7 +32,7 @@ A background task daemon that runs AI coding tasks 24/7, even when you close Ope
 ## Quick Start
 
 ```bash
-git clone https://github.com/engelswtf/sleepless-opencode
+git clone https://github.com/Luca-Pelzer/sleepless-opencode
 cd sleepless-opencode
 npm install
 cp .env.example .env  # Add Discord bot token
@@ -57,5 +57,5 @@ Then use the sleepless agent to queue tasks that run while you sleep.
 
 ## Links
 
-- [sleepless-opencode](https://github.com/engelswtf/sleepless-opencode) - Main daemon
-- [opencode-sleepless](https://github.com/engelswtf/opencode-sleepless) - OpenCode plugin
+- [sleepless-opencode](https://github.com/Luca-Pelzer/sleepless-opencode) - Main daemon
+- [opencode-sleepless](https://github.com/Luca-Pelzer/opencode-sleepless) - OpenCode plugin

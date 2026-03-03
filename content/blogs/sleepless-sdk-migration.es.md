@@ -7,7 +7,7 @@ categories: ["AI", "Technical"]
 description: "Cómo migramos de ejecución por línea de comandos a llamadas programáticas del SDK para ocultar un agente interno de la UI, resolviendo un problema de arquitectura complicado en sleepless-opencode."
 ---
 
-Estaba construyendo [sleepless-opencode](https://github.com/engelswtf/sleepless-opencode), un daemon de agente IA 24/7 que procesa tareas de programación en segundo plano. Piensa en ello como una cola de tareas donde envías trabajo a través de Discord, y un agente IA lo ejecuta mientras duermes.
+Estaba construyendo [sleepless-opencode](https://github.com/Luca-Pelzer/sleepless-opencode), un daemon de agente IA 24/7 que procesa tareas de programación en segundo plano. Piensa en ello como una cola de tareas donde envías trabajo a través de Discord, y un agente IA lo ejecuta mientras duermes.
 
 El daemon usa un agente especializado llamado `sleepless-executor` para ejecutar tareas. Este agente es puramente interno—no está pensado para interacción directa del usuario. Los usuarios nunca deberían seleccionarlo manualmente desde el selector de agentes.
 
@@ -181,4 +181,4 @@ Si estás construyendo integraciones de OpenCode y necesitas control programáti
 
 **¿Quieres probar sleepless-opencode?**
 
-Échale un vistazo en [GitHub](https://github.com/engelswtf/sleepless-opencode).
+Échale un vistazo en [GitHub](https://github.com/Luca-Pelzer/sleepless-opencode).
