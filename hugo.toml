@@ -1,0 +1,147 @@
+baseURL = "https://engelswtf.github.io"
+title = "engels.wtf"
+theme = "hugo-noir"
+
+# URL handling
+relativeURLs = false
+canonifyURLs = true
+
+# Multi-language configuration
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+
+[languages]
+  [languages.en]
+    languageCode = "en-US"
+    languageName = "English"
+    weight = 1
+    [languages.en.params]
+      name = "Luca Pelzer"
+      profile_image = "/images/profile.png"
+      description = "Luca Pelzer's personal site. Exploring, building & running AI infrastructure - from agents to self-hosted models."
+      location = "Germany"
+      github = "https://github.com/engelswtf"
+      github_username = "engelswtf"
+      discord = "262327058317836300"
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        name = "About"
+        pageRef = "/about"
+        weight = 1
+      [[languages.en.menu.main]]
+        name = "Experience"
+        pageRef = "/experience"
+        weight = 2
+      [[languages.en.menu.main]]
+        name = "Projects"
+        pageRef = "/projects"
+        weight = 3
+      [[languages.en.menu.main]]
+        name = "Blog"
+        pageRef = "/blogs"
+        weight = 4
+      [[languages.en.menu.main]]
+        name = "Prompts"
+        pageRef = "/prompts"
+        weight = 5
+      [[languages.en.menu.main]]
+        name = "Contact"
+        pageRef = "/contact"
+        weight = 6
+
+  [languages.de]
+    languageCode = "de-DE"
+    languageName = "Deutsch"
+    weight = 2
+    [languages.de.params]
+      name = "Luca Pelzer"
+      profile_image = "/images/profile.png"
+      description = "Luca Pelzers persönliche Seite. KI-Infrastruktur erkunden, bauen & betreiben - von Agenten bis zu selbst gehosteten Modellen."
+      location = "Deutschland"
+      github = "https://github.com/engelswtf"
+      github_username = "engelswtf"
+      discord = "262327058317836300"
+    [languages.de.menu]
+      [[languages.de.menu.main]]
+        name = "Über mich"
+        pageRef = "/about"
+        weight = 1
+      [[languages.de.menu.main]]
+        name = "Erfahrung"
+        pageRef = "/experience"
+        weight = 2
+      [[languages.de.menu.main]]
+        name = "Projekte"
+        pageRef = "/projects"
+        weight = 3
+      [[languages.de.menu.main]]
+        name = "Blog"
+        pageRef = "/blogs"
+        weight = 4
+      [[languages.de.menu.main]]
+        name = "Prompts"
+        pageRef = "/prompts"
+        weight = 5
+      [[languages.de.menu.main]]
+        name = "Kontakt"
+        pageRef = "/contact"
+        weight = 6
+
+  [languages.es]
+    languageCode = "es-ES"
+    languageName = "Español"
+    weight = 3
+    [languages.es.params]
+      name = "Luca Pelzer"
+      profile_image = "/images/profile.png"
+      description = "Sitio personal de Luca Pelzer. Explorando, construyendo y ejecutando infraestructura de IA - desde agentes hasta modelos autoalojados."
+      location = "Alemania"
+      github = "https://github.com/engelswtf"
+      github_username = "engelswtf"
+      discord = "262327058317836300"
+    [languages.es.menu]
+      [[languages.es.menu.main]]
+        name = "Sobre mí"
+        pageRef = "/about"
+        weight = 1
+      [[languages.es.menu.main]]
+        name = "Experiencia"
+        pageRef = "/experience"
+        weight = 2
+      [[languages.es.menu.main]]
+        name = "Proyectos"
+        pageRef = "/projects"
+        weight = 3
+      [[languages.es.menu.main]]
+        name = "Blog"
+        pageRef = "/blogs"
+        weight = 4
+      [[languages.es.menu.main]]
+        name = "Prompts"
+        pageRef = "/prompts"
+        weight = 5
+      [[languages.es.menu.main]]
+        name = "Contacto"
+        pageRef = "/contact"
+        weight = 6
+
+# Taxonomy configuration
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[params]
+  # Fallback profile information
+  name = "Luca Pelzer"
+  profile_image = "/images/profile.png"
+  description = "Luca Pelzer's personal site. Exploring, building & running AI infrastructure - from agents to self-hosted models."
+  location = "Germany"
+  github = "https://github.com/engelswtf"
+  github_username = "engelswtf"
+  discord = "262327058317836300"
+
+# Sitemap configuration
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5

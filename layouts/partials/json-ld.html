@@ -1,0 +1,78 @@
+{{/* JSON-LD Structured Data for SEO */}}
+{{- $isBlogPost := and (eq .Section "blogs") (not .IsNode) -}}
+{{- $authorName := .Site.Params.name | default "engels" -}}
+{{- $siteURL := .Site.BaseURL -}}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "{{ $siteURL }}#website",
+      "name": "{{ .Site.Title }}",
+      "url": "{{ $siteURL }}",
+      "description": "{{ .Site.Params.description }}",
+      "inLanguage": "{{ .Site.Language.Lang }}",
+      "publisher": {
+        "@id": "{{ $siteURL }}#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "{{ $siteURL }}#person",
+      "name": "{{ $authorName }}",
+      "alternateName": "engels",
+      "url": "{{ $siteURL }}",
+      "description": "{{ .Site.Params.description }}",
+      "jobTitle": "IT System Integration Apprentice",
+      "knowsAbout": ["AI", "Artificial Intelligence", "Homelab", "Self-hosting", "Proxmox", "LLM", "AI Agents"],
+      "sameAs": [
+        {{- with .Site.Params.github }}"{{ . }}"{{ end }}
+        {{- with .Site.Params.discord }},
+        "https://discord.com/users/{{ . }}"
+        {{- end }}
+      ]
+    }
+    {{- if $isBlogPost }},
+    {
+      "@type": "BlogPosting",
+      "@id": "{{ .Permalink }}#article",
+      "headline": "{{ .Title }}",
+      "description": "{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}",
+      "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+      "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+      "author": {
+        "@id": "{{ $siteURL }}#person"
+      },
+      "publisher": {
+        "@id": "{{ $siteURL }}#person"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ .Permalink }}"
+      },
+      "url": "{{ .Permalink }}",
+      "inLanguage": "{{ .Language.Lang }}"
+      {{- with .Params.image }},
+      "image": {
+        "@type": "ImageObject",
+        "url": "{{ . | absURL }}"
+      }
+      {{- else }},
+      "image": {
+        "@type": "ImageObject",
+        "url": "{{ $siteURL }}images/og-image.png"
+      }
+      {{- end }}
+      {{- with .Params.tags }},
+      "keywords": "{{ delimit . ", " }}"
+      {{- end }}
+      {{- if .WordCount }},
+      "wordCount": {{ .WordCount }}
+      {{- end }}
+    }
+    {{- end }}
+  ]
+}
+</script>

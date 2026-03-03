@@ -1,0 +1,24 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a"/>
+      <stop offset="100%" style="stop-color:#2a2a2a"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <!-- Icon + name on one line, centered -->
+  <g transform="translate(600, 265)">
+    <!-- Terminal icon >_ -->
+    <path d="M-320 0 L-280 35 L-320 70" stroke="#e5e7eb" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M-265 70 L-210 70" stroke="#e5e7eb" stroke-width="12" stroke-linecap="round"/>
+    
+    <!-- engels.wtf text -->
+    <text x="80" y="60" font-family="Arial, sans-serif" font-size="100" font-weight="bold" fill="#ffffff" text-anchor="middle">engels.wtf</text>
+  </g>
+  
+  <!-- Tagline -->
+  <text x="600" y="450" font-family="Arial, sans-serif" font-size="32" fill="#9ca3af" text-anchor="middle">Homelab • Automation • Docs</text>
+</svg>

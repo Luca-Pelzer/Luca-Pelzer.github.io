@@ -1,0 +1,59 @@
+stats:
+  - number: "auto"
+    label: "Años de Experiencia"
+  - number: "auto"
+    label: "Tecnologías"
+  - number: "auto"
+    label: "Proyectos"
+  - number: "3+"
+    label: "Certificaciones"
+
+experience:
+  - role: "Aprendiz de Integración de Sistemas IT"
+    company: "Formación Profesional"
+    company_link: ""
+    period: "Septiembre 2023 - Presente"
+    country: "Alemania"
+    responsibilities:
+      - "Aprendizaje de infraestructura IT empresarial y administración de sistemas"
+      - "Adquisición de experiencia práctica con redes, servidores y soporte técnico"
+      - "Trabajo con integración de sistemas y gestión de servicios IT"
+    technologies:
+      - "Windows Server"
+      - "Redes"
+      - "Linux"
+      - "Soporte IT"
+
+  - role: "Desarrollador de Agentes IA"
+    company: "Proyectos Personales"
+    company_link: "#projects"
+    period: "2025 - Presente"
+    country: "Alemania"
+    responsibilities:
+      - "Construcción de sistemas multi-agente de IA con Claude Code y orquestación personalizada"
+      - "Implementación de servidores MCP para integración de herramientas y servidores LSP para inteligencia de código"
+      - "Desarrollo de gestión de infraestructura impulsada por IA y flujos de automatización"
+      - "Experimentación con prompt engineering y optimización del comportamiento de agentes"
+    technologies:
+      - "Claude"
+      - "OpenAI"
+      - "MCP"
+      - "Python"
+      - "n8n"
+
+  - role: "Ingeniero de Infraestructura IA"
+    company: "Lab Autoalojado"
+    company_link: "#projects"
+    period: "2025 - Presente"
+    country: "Casa"
+    responsibilities:
+      - "Ejecución de cargas de trabajo de IA autoalojadas en infraestructura Proxmox VE"
+      - "Despliegue de LLMs locales con Ollama para uso de IA centrado en privacidad"
+      - "Construcción de pipelines automatizados donde agentes de IA gestionan la infraestructura del servidor"
+      - "Integración de herramientas de IA con servicios homelab para automatización inteligente"
+    technologies:
+      - "Proxmox"
+      - "Ollama"
+      - "Docker"
+      - "LXC"
+      - "Linux"

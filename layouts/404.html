@@ -1,0 +1,45 @@
+{{ define "main" }}
+<div class="min-h-screen flex items-center justify-center px-4">
+    <div class="max-w-2xl w-full text-center">
+        <!-- Terminal Icon -->
+        <div class="mb-8">
+            <span class="text-8xl font-mono text-gray-800 dark:text-gray-200">
+                >_
+            </span>
+        </div>
+        
+        <!-- 404 Error -->
+        <h1 class="text-6xl md:text-8xl font-bold mb-4 text-gray-900 dark:text-white">
+            404
+        </h1>
+        
+        <!-- Error Message -->
+        <p class="text-2xl md:text-3xl font-mono mb-8 text-gray-700 dark:text-gray-300">
+            Page not found
+        </p>
+        
+        <!-- Description -->
+        <p class="text-lg mb-12 text-gray-600 dark:text-gray-400 max-w-md mx-auto">
+            The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+        </p>
+        
+        <!-- Back to Home Button -->
+        <a href="{{ .Site.BaseURL }}" 
+           class="inline-block px-8 py-4 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 font-mono rounded-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors duration-200 shadow-lg">
+            ← Back to Home
+        </a>
+        
+        <!-- Terminal-style error code -->
+        <div class="mt-16 p-6 bg-gray-100 dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 font-mono text-left max-w-md mx-auto">
+            <div class="text-red-600 dark:text-red-400 mb-2">
+                ERROR: HTTP 404
+            </div>
+            <div class="text-gray-700 dark:text-gray-300 text-sm">
+                $ curl {{ .Permalink }}<br>
+                <span class="text-yellow-600 dark:text-yellow-400">curl: (404) Not Found</span><br>
+                $ _
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}

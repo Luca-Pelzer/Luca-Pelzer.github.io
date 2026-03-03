@@ -1,0 +1,59 @@
+stats:
+  - number: "auto"
+    label: "Jahre Erfahrung"
+  - number: "auto"
+    label: "Technologien"
+  - number: "auto"
+    label: "Projekte"
+  - number: "3+"
+    label: "Zertifikate"
+
+experience:
+  - role: "Auszubildender Fachinformatiker Systemintegration"
+    company: "Berufsausbildung"
+    company_link: ""
+    period: "September 2023 - Heute"
+    country: "Deutschland"
+    responsibilities:
+      - "Erlernen von Enterprise-IT-Infrastruktur und Systemadministration"
+      - "Praktische Erfahrung mit Netzwerken, Servern und technischem Support"
+      - "Arbeit mit Systemintegration und IT-Service-Management"
+    technologies:
+      - "Windows Server"
+      - "Netzwerk"
+      - "Linux"
+      - "IT-Support"
+
+  - role: "KI-Agenten-Entwickler"
+    company: "Persönliche Projekte"
+    company_link: "#projects"
+    period: "2025 - Heute"
+    country: "Deutschland"
+    responsibilities:
+      - "Entwicklung von Multi-Agenten-KI-Systemen mit Claude Code und eigener Orchestrierung"
+      - "Implementierung von MCP-Servern für Tool-Integration und LSP-Servern für Code-Intelligenz"
+      - "Entwicklung von KI-gesteuertem Infrastrukturmanagement und Automatisierungs-Workflows"
+      - "Experimente mit Prompt Engineering und Optimierung von Agentenverhalten"
+    technologies:
+      - "Claude"
+      - "OpenAI"
+      - "MCP"
+      - "Python"
+      - "n8n"
+
+  - role: "KI-Infrastruktur-Ingenieur"
+    company: "Self-Hosted Lab"
+    company_link: "#projects"
+    period: "2025 - Heute"
+    country: "Zuhause"
+    responsibilities:
+      - "Betrieb von selbst gehosteten KI-Workloads auf Proxmox VE Infrastruktur"
+      - "Deployment von lokalen LLMs mit Ollama für datenschutzfreundliche KI-Nutzung"
+      - "Aufbau automatisierter Pipelines, bei denen KI-Agenten die Server-Infrastruktur verwalten"
+      - "Integration von KI-Tools mit Homelab-Diensten für intelligente Automatisierung"
+    technologies:
+      - "Proxmox"
+      - "Ollama"
+      - "Docker"
+      - "LXC"
+      - "Linux"

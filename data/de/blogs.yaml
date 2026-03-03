@@ -1,0 +1,86 @@
+blogs:
+  - title: "Von CLI zu SDK: Wie der interne Agent von Sleepless-OpenCode wirklich unsichtbar wurde"
+    date: "January 12, 2025"
+    link: "/blogs/sleepless-sdk-migration/"
+    summary: "Wie wir von Kommandozeilen-Ausführung zu programmatischen SDK-Aufrufen migriert haben, um einen internen Agenten vor der UI zu verstecken und ein kniffliges Architekturproblem in sleepless-opencode zu lösen."
+    tags:
+      - opencode
+      - sdk
+      - agents
+      - automation
+      - typescript
+      - sleepless-opencode
+  - title: "Agent Design Patterns: Was einen guten KI-Agenten ausmacht"
+    date: "January 11, 2025"
+    link: "/blogs/agent-design-patterns/"
+    summary: "Nach dem Bau von 28 spezialisierten Agenten, hier sind die Patterns die wirklich funktionieren. Von Struktur über Constraints bis Kommunikationsstil - ein praktischer Guide zum Agent-Design."
+    tags:
+      - ai
+      - agents
+      - prompt-engineering
+      - patterns
+      - opencode
+      - automation
+  - title: "Der unvermeidliche Pivot: Warum alle meine Projekte jetzt zu KI führen"
+    date: "January 11, 2025"
+    link: "/blogs/focusing-on-ai/"
+    summary: "Ich kam her, um ein Homelab zu bauen. Irgendwie endete ich mit 110 Prompts, 28 Agents und der Erkenntnis, dass ich die ganze Zeit KI-Infrastruktur gebaut habe."
+    tags:
+      - ai
+      - automation
+      - opencode
+      - agents
+      - workflows
+      - meta
+      - productivity
+  - title: "Mein KI-Team: Wie Multi-Agent-Workflows sich anfühlen wie echte Mitarbeiter"
+    date: "December 16, 2025"
+    link: "/blogs/multiagent-ai-workflow/"
+    summary: "Ich habe ein Multi-Agent-KI-System mit 11 spezialisierten Agenten mit OpenCode gebaut. Kombiniert mit MCPs und LSPs können sie tatsächlich mit meiner Infrastruktur interagieren. Es fühlt sich wirklich an wie Delegieren an ein Team."
+    tags:
+      - ai
+      - automation
+      - opencode
+      - mcp
+      - productivity
+      - homelab
+  - title: "LearnTogether bauen: Weil alleine lernen langweilig ist"
+    date: "December 16, 2025"
+    link: "/blogs/building-learn-together/"
+    summary: "Wie ich eine Echtzeit-Multiplayer-Lernplattform für die deutsche IT-Prüfungsvorbereitung gebaut habe, komplett mit Duellen, Rennen und viel zu vielen Karteikarten. Produktive Prokrastination vom Feinsten."
+    tags:
+      - nextjs
+      - typescript
+      - socket.io
+      - multiplayer
+      - education
+  - title: "Wenn dein Server nur laggt, wenn du nicht hinschaust: IRQ-Imbalance beheben"
+    date: "December 11, 2025"
+    link: "/blogs/fixing-network-lag-irq-imbalance/"
+    summary: "Mysteriöser Netzwerk-Lag, der verschwand, wenn das Monitoring startete? Es war IRQ-Imbalance - alle Netzwerk-Interrupts auf einem CPU-Core. So diagnostizierst und behebst du es."
+    tags:
+      - proxmox
+      - networking
+      - performance-tuning
+      - debugging
+      - linux
+  - title: "Meinen eigenen E-Mail-Server mit Stalwart bauen: Eine Reise zu 10/10 (außer Microsoft)"
+    date: "December 11, 2025"
+    link: "/blogs/stalwart-email-server-guide/"
+    summary: "Eine vollständige Anleitung zum Einrichten eines selbst gehosteten E-Mail-Servers mit Stalwart Mail Server, Snappymail Webmail und allen DNS-Einträgen, die du brauchst. Plus die andauernde Saga von Microsoft, die meinen perfekt konfigurierten Server blockiert."
+    tags:
+      - email
+      - stalwart
+      - self-hosting
+      - proxmox
+  - title: "Warum ich engels.wtf gebaut habe: Mehr als nur ein weiterer Tech-Blog"
+    date: "December 10, 2025"
+    link: "/blogs/why-i-built-engels-wtf/"
+    summary: "Warum ich meinen eigenen Blog von Grund auf gebaut habe, wie er in meinem Homelab eingerichtet ist und warum Bloggen das beste Wissensmanagement-System ist, das ich gefunden habe."
+    tags:
+      - meta
+      - blogging
+      - homelab
+      - self-hosting
+      - hugo
+      - documentation

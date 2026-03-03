@@ -1,0 +1,86 @@
+{{ define "main" }}
+<div class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-5xl font-bold mb-6 text-text-primary-light dark:text-text-primary-dark">{{ .Title }}</h1>
+
+    <div class="flex flex-col gap-8">
+        <div class="flex-grow">
+            <div class="bg-bg-primary-light dark:bg-bg-secondary-dark p-8 rounded-lg mb-8 border border-border-primary-light dark:border-border-primary-dark">
+                <div class="prose prose-xl max-w-none about-content">
+                    <div>
+                        {{ .Content }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .prose {
+        color: #4b5563;
+        font-size: 1.125rem;
+    }
+    html.dark .prose {
+        color: #9ca3af;
+    }
+    .prose p {
+        color: #4b5563;
+        margin-bottom: 1.5rem;
+        line-height: 1.9;
+    }
+    html.dark .prose p {
+        color: #9ca3af;
+    }
+    .prose p + p {
+        margin-top: 2rem;
+    }
+    
+    /* Question headings */
+    .about-content h2 {
+        font-size: 1.35rem;
+        font-weight: 600;
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+        color: #111827;
+    }
+    html.dark .about-content h2 {
+        color: #ffffff;
+    }
+    
+    .about-content h2:first-child {
+        margin-top: 0;
+    }
+    
+    /* Subheadings - same white color */
+    .about-content h3 {
+        font-size: 1.35rem;
+        font-weight: 600;
+        margin-top: 1.75rem;
+        margin-bottom: 0.75rem;
+        color: #111827;
+    }
+    html.dark .about-content h3 {
+        color: #ffffff;
+    }
+    
+    /* Lists */
+    .about-content ul {
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    .about-content li {
+        margin-bottom: 0.75rem;
+        color: #4b5563;
+    }
+    .about-content strong {
+        color: #111827;
+        font-weight: 600;
+    }
+    html.dark .about-content strong {
+        color: #ffffff;
+    }
+    html.dark .about-content li {
+        color: #9ca3af;
+    }
+</style>
+{{ end }}

@@ -1,0 +1,30 @@
+projects:
+  - title: "Sleepless OpenCode"
+    description: "Un daemon de tareas en segundo plano 24/7 para OpenCode que procesa tareas de IA mientras estás ausente. Encola tareas via bot de Discord o herramientas MCP, recibe notificación al completar."
+    tech: "TypeScript, Discord.js, SQLite, OpenCode MCP"
+    image: "/images/projects/sleepless.svg"
+    link: "https://github.com/engelswtf/sleepless-opencode"
+
+  - title: "LearnTogether"
+    description: "Una plataforma de aprendizaje multijugador en tiempo real para la preparación de exámenes de TI alemanes (IHK Fachinformatiker) con 5 modos de juego: tarjetas, quiz, duelo, carrera y simulación de examen realista."
+    tech: "Next.js, TypeScript, Socket.io, Tailwind CSS"
+    image: "/images/projects/learn-together.svg"
+    link: "https://github.com/engelswtf/learn-together"
+    
+  - title: "EngelGuard"
+    description: "Un bot de moderación profesional para Twitch con capacidades de auto-mod, comandos personalizados, sistema de lealtad y panel web para gestión de streams."
+    tech: "Python, Twitch API, Web Dashboard"
+    image: "/images/projects/engelguard.svg"
+    link: "https://github.com/engelswtf/engelguard"
+    
+  - title: "Infraestructura Homelab Proxmox"
+    description: "Una configuración completa de homelab con Proxmox VE, múltiples contenedores LXC y VMs para varios servicios auto-alojados incluyendo monitoreo, automatización y gestión de medios."
+    tech: "Proxmox, LXC, Docker, Shorewall, Caddy"
+    image: "/images/projects/homelab.svg"
+    link: "https://github.com/engelswtf"
+    
+  - title: "Plataforma de Blog Hugo"
+    description: "Un blog auto-alojado construido con Hugo y un tema oscuro personalizado, con editor markdown basado en web y reconstrucciones automáticas del sitio cuando cambia el contenido."
+    tech: "Hugo, Caddy, Docker, Markdown"
+    image: "/images/projects/blog.svg"
+    link: "https://www.engels.wtf"

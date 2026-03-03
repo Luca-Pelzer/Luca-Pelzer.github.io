@@ -1,0 +1,386 @@
+<div id="prompt-builder-widget">
+    <div id="pb-toggle" class="fixed bottom-6 right-3 sm:right-6 z-50 group cursor-pointer">
+        <div class="flex items-center">
+            <span id="pb-label" class="mr-2 px-3 py-2 bg-gray-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+                Prompt Builder
+            </span>
+            <button class="w-14 h-14 bg-gray-800 hover:bg-gray-700 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 border border-gray-600">
+                <svg id="pb-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+                <svg id="pb-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Panel -->
+    <div id="pb-panel" class="fixed bottom-24 right-3 sm:right-6 w-[calc(100vw-3rem)] sm:w-96 max-h-[70vh] bg-bg-primary-light dark:bg-bg-secondary-dark border border-border-primary-light dark:border-border-primary-dark rounded-lg shadow-2xl z-50 hidden flex-col overflow-hidden">
+        <!-- Header -->
+        <div class="px-4 py-3 border-b border-border-primary-light dark:border-border-primary-dark flex items-center justify-between">
+            <h3 class="font-bold text-text-primary-light dark:text-text-primary-dark">Prompt Builder</h3>
+            <button id="pb-back" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 hidden">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Content -->
+        <div id="pb-content" class="flex-grow overflow-y-auto p-4">
+            <!-- Step 1: Categories -->
+            <div id="pb-step-categories">
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Select a category</p>
+                <div id="pb-categories" class="space-y-2"></div>
+            </div>
+
+            <!-- Step 2: Prompts -->
+            <div id="pb-step-prompts" class="hidden">
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Select a prompt</p>
+                <div id="pb-prompts" class="space-y-2"></div>
+            </div>
+
+            <!-- Step 3: Variables -->
+            <div id="pb-step-variables" class="hidden">
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Fill in the details</p>
+                <div id="pb-variables" class="space-y-4"></div>
+                <button id="pb-generate" class="w-full mt-4 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded transition-colors">
+                    Generate Prompt
+                </button>
+            </div>
+
+            <!-- Step 4: Result -->
+            <div id="pb-step-result" class="hidden">
+                <div class="flex items-center justify-between mb-3">
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Your prompt is ready</p>
+                    <button id="pb-copy" class="text-sm px-3 py-1 bg-gray-700 hover:bg-gray-600 text-white rounded transition-colors flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                        </svg>
+                        <span>Copy</span>
+                    </button>
+                </div>
+                <pre id="pb-result" class="bg-gray-100 dark:bg-gray-800 p-3 rounded text-sm text-gray-700 dark:text-gray-300 overflow-x-auto whitespace-pre-wrap max-h-80 overflow-y-auto"></pre>
+                <button id="pb-new" class="w-full mt-4 px-4 py-2 border border-gray-600 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors">
+                    Build Another
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{ "<!-- Prompt Builder Script -->" | safeHTML }}
+<script>
+(function() {
+    var GITHUB_RAW = 'https://raw.githubusercontent.com/engelswtf/ai-prompts/main/prompts';
+    
+    var categoryIcons = {
+        'debugging': '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>',
+        'code-review': '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>',
+        'documentation': '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>',
+        'config-translator': '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>',
+        'security-audit': '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>',
+        'log-analysis': '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>'
+    };
+
+    var categories = [
+        { id: 'debugging', name: 'Debugging & Troubleshooting' },
+        { id: 'code-review', name: 'Code Review' },
+        { id: 'documentation', name: 'Documentation' },
+        { id: 'config-translator', name: 'Config Translator' },
+        { id: 'security-audit', name: 'Security Audit' },
+        { id: 'log-analysis', name: 'Log Analysis' }
+    ];
+
+    var prompts = {
+        'debugging': [
+            { file: '01-error-trace-analyzer.yaml', name: 'Error Trace Analyzer' },
+            { file: '02-rubber-duck-debugger.yaml', name: 'Rubber Duck Debugger' },
+            { file: '03-api-error-decoder.yaml', name: 'API Error Decoder' },
+            { file: '04-dependency-resolver.yaml', name: 'Dependency Resolver' },
+            { file: '05-git-conflict-resolver.yaml', name: 'Git Conflict Resolver' },
+            { file: '06-memory-leak-hunter.yaml', name: 'Memory Leak Hunter' },
+            { file: '07-race-condition-finder.yaml', name: 'Race Condition Finder' },
+            { file: '08-database-query-debugger.yaml', name: 'Database Query Debugger' },
+            { file: '09-environment-diff-checker.yaml', name: 'Environment Diff Checker' },
+            { file: '10-network-issue-diagnoser.yaml', name: 'Network Issue Diagnoser' },
+            { file: '11-performance-bottleneck-finder.yaml', name: 'Performance Bottleneck Finder' },
+            { file: '12-config-validator.yaml', name: 'Config Validator' },
+            { file: '13-build-failure-analyzer.yaml', name: 'Build Failure Analyzer' },
+            { file: '14-test-failure-investigator.yaml', name: 'Test Failure Investigator' },
+            { file: '15-container-debugger.yaml', name: 'Container Debugger' },
+            { file: '16-css-layout-debugger.yaml', name: 'CSS Layout Debugger' },
+            { file: '17-auth-flow-debugger.yaml', name: 'Auth Flow Debugger' },
+            { file: '18-hydration-mismatch-debugger.yaml', name: 'Hydration Mismatch Debugger' },
+            { file: '19-async-state-debugger.yaml', name: 'Async State Debugger' }
+        ],
+        'code-review': [
+            { file: '01-security-scanner.yaml', name: 'Security Scanner (OWASP)' },
+            { file: '02-performance-reviewer.yaml', name: 'Performance Reviewer' },
+            { file: '03-code-smell-detector.yaml', name: 'Code Smell Detector' },
+            { file: '04-api-design-reviewer.yaml', name: 'API Design Reviewer' },
+            { file: '05-type-safety-auditor.yaml', name: 'Type Safety Auditor' },
+            { file: '06-error-handling-reviewer.yaml', name: 'Error Handling Reviewer' },
+            { file: '07-test-coverage-analyzer.yaml', name: 'Test Coverage Analyzer' },
+            { file: '08-naming-convention-checker.yaml', name: 'Naming Convention Checker' },
+            { file: '09-documentation-gaps-finder.yaml', name: 'Documentation Gaps Finder' },
+            { file: '10-complexity-reducer.yaml', name: 'Complexity Reducer' },
+            { file: '11-best-practices-enforcer.yaml', name: 'Best Practices Enforcer' },
+            { file: '12-pr-summary-generator.yaml', name: 'PR Summary Generator' },
+            { file: '13-accessibility-reviewer.yaml', name: 'Accessibility Reviewer' },
+            { file: '14-dependency-health-checker.yaml', name: 'Dependency Health Checker' },
+            { file: '15-async-patterns-reviewer.yaml', name: 'Async Patterns Reviewer' },
+            { file: '16-database-query-reviewer.yaml', name: 'Database Query Reviewer' },
+            { file: '17-backwards-compatibility-checker.yaml', name: 'Backwards Compatibility Checker' }
+        ],
+        'documentation': [
+            { file: '01-readme-generator.yaml', name: 'README Generator' },
+            { file: '02-api-documentation-writer.yaml', name: 'API Documentation Writer' },
+            { file: '03-code-comment-writer.yaml', name: 'Code Comment Writer' },
+            { file: '04-architecture-doc-generator.yaml', name: 'Architecture Doc Generator' },
+            { file: '05-changelog-generator.yaml', name: 'Changelog Generator' },
+            { file: '06-migration-guide-writer.yaml', name: 'Migration Guide Writer' },
+            { file: '07-troubleshooting-guide-creator.yaml', name: 'Troubleshooting Guide Creator' },
+            { file: '08-tutorial-writer.yaml', name: 'Tutorial Writer' },
+            { file: '09-docstring-generator.yaml', name: 'Docstring Generator' },
+            { file: '10-decision-record-writer.yaml', name: 'Decision Record Writer (ADR)' },
+            { file: '11-runbook-writer.yaml', name: 'Runbook Writer' },
+            { file: '12-onboarding-doc-generator.yaml', name: 'Onboarding Doc Generator' },
+            { file: '13-api-changelog-writer.yaml', name: 'API Changelog Writer' },
+            { file: '14-configuration-reference-generator.yaml', name: 'Configuration Reference Generator' },
+            { file: '15-release-notes-writer.yaml', name: 'Release Notes Writer' },
+            { file: '16-security-documentation-writer.yaml', name: 'Security Documentation Writer' },
+            { file: '17-glossary-generator.yaml', name: 'Glossary Generator' },
+            { file: '18-integration-guide-writer.yaml', name: 'Integration Guide Writer' }
+        ],
+        'config-translator': [
+            { file: '01-docker-k8s.yaml', name: 'Docker to Kubernetes' },
+            { file: '02-json-yaml-toml.yaml', name: 'JSON/YAML/TOML Converter' },
+            { file: '03-cicd-converter.yaml', name: 'CI/CD Pipeline Converter' },
+            { file: '04-nginx-traefik-caddy.yaml', name: 'Nginx/Traefik/Caddy Converter' },
+            { file: '05-terraform-pulumi-cloudformation.yaml', name: 'Terraform/Pulumi/CloudFormation' },
+            { file: '06-eslint-biome-prettier.yaml', name: 'ESLint/Biome/Prettier Converter' },
+            { file: '07-systemd-docker-supervisord.yaml', name: 'Systemd/Docker/Supervisord' },
+            { file: '08-env-vars-config-files.yaml', name: 'Env Vars to Config Files' },
+            { file: '09-database-connection-converter.yaml', name: 'Database Connection Converter' },
+            { file: '10-auth-provider-converter.yaml', name: 'Auth Provider Converter' },
+            { file: '11-monitoring-observability-converter.yaml', name: 'Monitoring/Observability Converter' },
+            { file: '12-build-tool-converter.yaml', name: 'Build Tool Converter' },
+            { file: '13-package-manager-converter.yaml', name: 'Package Manager Converter' },
+            { file: '14-api-gateway-converter.yaml', name: 'API Gateway Converter' },
+            { file: '15-message-queue-converter.yaml', name: 'Message Queue Converter' },
+            { file: '16-cron-scheduler-converter.yaml', name: 'Cron/Scheduler Converter' },
+            { file: '17-secret-manager-converter.yaml', name: 'Secret Manager Converter' },
+            { file: '18-container-registry-converter.yaml', name: 'Container Registry Converter' },
+            { file: '19-git-ignore-converter.yaml', name: 'Git Ignore Converter' },
+            { file: '20-schema-type-converter.yaml', name: 'Schema/Type Converter' }
+        ],
+        'security-audit': [
+            { file: '01-owasp-scanner.yaml', name: 'OWASP Scanner' },
+            { file: '02-secret-detector.yaml', name: 'Secret Detector' },
+            { file: '03-input-validation-auditor.yaml', name: 'Input Validation Auditor' },
+            { file: '04-authentication-flow-reviewer.yaml', name: 'Authentication Flow Reviewer' },
+            { file: '05-authorization-logic-checker.yaml', name: 'Authorization Logic Checker' },
+            { file: '06-dependency-vulnerability-scanner.yaml', name: 'Dependency Vulnerability Scanner' },
+            { file: '07-api-security-auditor.yaml', name: 'API Security Auditor' },
+            { file: '08-infrastructure-security-reviewer.yaml', name: 'Infrastructure Security Reviewer' },
+            { file: '09-encryption-auditor.yaml', name: 'Encryption Auditor' },
+            { file: '10-security-headers-checker.yaml', name: 'Security Headers Checker' },
+            { file: '11-session-management-auditor.yaml', name: 'Session Management Auditor' },
+            { file: '12-file-upload-security-checker.yaml', name: 'File Upload Security Checker' },
+            { file: '13-cors-configuration-auditor.yaml', name: 'CORS Configuration Auditor' },
+            { file: '14-rate-limiting-analyzer.yaml', name: 'Rate Limiting Analyzer' },
+            { file: '15-logging-security-auditor.yaml', name: 'Logging Security Auditor' },
+            { file: '16-ssrf-vulnerability-scanner.yaml', name: 'SSRF Vulnerability Scanner' },
+            { file: '17-jwt-security-auditor.yaml', name: 'JWT Security Auditor' },
+            { file: '18-graphql-security-scanner.yaml', name: 'GraphQL Security Scanner' }
+        ],
+        'log-analysis': [
+            { file: '01-log-summarizer.yaml', name: 'Log Summarizer' },
+            { file: '02-error-frequency.yaml', name: 'Error Frequency Analyzer' },
+            { file: '03-timeline-reconstructor.yaml', name: 'Timeline Reconstructor' },
+            { file: '04-anomaly-detector.yaml', name: 'Anomaly Detector' },
+            { file: '05-user-journey-tracker.yaml', name: 'User Journey Tracker' },
+            { file: '06-performance-metrics-extractor.yaml', name: 'Performance Metrics Extractor' },
+            { file: '07-log-format-converter.yaml', name: 'Log Format Converter' },
+            { file: '08-alert-rule-generator.yaml', name: 'Alert Rule Generator' },
+            { file: '09-log-correlation-analyzer.yaml', name: 'Log Correlation Analyzer' },
+            { file: '10-log-regex-extractor.yaml', name: 'Log Regex Extractor' },
+            { file: '11-compliance-log-auditor.yaml', name: 'Compliance Log Auditor' },
+            { file: '12-root-cause-analyzer.yaml', name: 'Root Cause Analyzer' },
+            { file: '13-log-retention-analyzer.yaml', name: 'Log Retention Analyzer' },
+            { file: '14-distributed-trace-analyzer.yaml', name: 'Distributed Trace Analyzer' },
+            { file: '15-log-sampling-optimizer.yaml', name: 'Log Sampling Optimizer' },
+            { file: '16-security-log-analyzer.yaml', name: 'Security Log Analyzer' },
+            { file: '17-log-cost-optimizer.yaml', name: 'Log Cost Optimizer' },
+            { file: '18-structured-log-designer.yaml', name: 'Structured Log Designer' }
+        ]
+    };
+
+    var currentCategory = null;
+    var currentPrompt = null;
+    var currentContent = null;
+    var currentVariables = [];
+
+    var toggle = document.getElementById('pb-toggle');
+    var panel = document.getElementById('pb-panel');
+    var iconOpen = document.getElementById('pb-icon-open');
+    var iconClose = document.getElementById('pb-icon-close');
+    var backBtn = document.getElementById('pb-back');
+    var categoriesContainer = document.getElementById('pb-categories');
+    var promptsContainer = document.getElementById('pb-prompts');
+    var variablesContainer = document.getElementById('pb-variables');
+    var resultContainer = document.getElementById('pb-result');
+
+    var stepCategories = document.getElementById('pb-step-categories');
+    var stepPrompts = document.getElementById('pb-step-prompts');
+    var stepVariables = document.getElementById('pb-step-variables');
+    var stepResult = document.getElementById('pb-step-result');
+
+    function showStep(step) {
+        [stepCategories, stepPrompts, stepVariables, stepResult].forEach(function(s) { s.classList.add('hidden'); });
+        step.classList.remove('hidden');
+        backBtn.classList.toggle('hidden', step === stepCategories);
+    }
+
+    toggle.addEventListener('click', function() {
+        var isOpen = !panel.classList.contains('hidden');
+        panel.classList.toggle('hidden', isOpen);
+        panel.classList.toggle('flex', !isOpen);
+        iconOpen.classList.toggle('hidden', !isOpen);
+        iconClose.classList.toggle('hidden', isOpen);
+        if (!isOpen) reset();
+    });
+
+    backBtn.addEventListener('click', function() {
+        if (!stepPrompts.classList.contains('hidden')) {
+            showStep(stepCategories);
+        } else if (!stepVariables.classList.contains('hidden')) {
+            renderPrompts(currentCategory);
+            showStep(stepPrompts);
+        } else if (!stepResult.classList.contains('hidden')) {
+            showStep(stepVariables);
+        }
+    });
+
+    function reset() {
+        currentCategory = null;
+        currentPrompt = null;
+        currentContent = null;
+        currentVariables = [];
+        showStep(stepCategories);
+    }
+
+    function renderCategories() {
+        categoriesContainer.innerHTML = categories.map(function(cat) {
+            return '<button class="w-full text-left px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center gap-3 text-text-primary-light dark:text-text-primary-dark transition-colors" data-category="' + cat.id + '">' +
+                '<span class="text-gray-500 dark:text-gray-400">' + categoryIcons[cat.id] + '</span>' +
+                '<span>' + cat.name + '</span>' +
+            '</button>';
+        }).join('');
+
+        categoriesContainer.querySelectorAll('button').forEach(function(btn) {
+            btn.addEventListener('click', function() { selectCategory(btn.dataset.category); });
+        });
+    }
+
+    function selectCategory(catId) {
+        currentCategory = catId;
+        renderPrompts(catId);
+        showStep(stepPrompts);
+    }
+
+    function renderPrompts(catId) {
+        var list = prompts[catId] || [];
+        promptsContainer.innerHTML = list.map(function(p) {
+            return '<button class="w-full text-left px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-text-primary-light dark:text-text-primary-dark text-sm transition-colors" data-file="' + p.file + '">' +
+                p.name +
+            '</button>';
+        }).join('');
+
+        promptsContainer.querySelectorAll('button').forEach(function(btn) {
+            btn.addEventListener('click', function() { selectPrompt(btn.dataset.file); });
+        });
+    }
+
+    function selectPrompt(file) {
+        currentPrompt = file;
+        var url = GITHUB_RAW + '/' + currentCategory + '/' + file;
+        
+        promptsContainer.innerHTML = '<p class="text-center text-gray-500">Loading...</p>';
+        fetch(url)
+            .then(function(res) {
+                if (!res.ok) throw new Error('Failed to fetch');
+                return res.text();
+            })
+            .then(function(text) {
+                currentContent = text;
+                var matches = currentContent.match(/\{\{([^}]+)\}\}/g) || [];
+                var seen = {};
+                currentVariables = [];
+                matches.forEach(function(m) {
+                    var v = m.slice(2, -2).trim();
+                    if (!seen[v]) {
+                        seen[v] = true;
+                        currentVariables.push(v);
+                    }
+                });
+                renderVariables();
+                showStep(stepVariables);
+            })
+            .catch(function() {
+                promptsContainer.innerHTML = '<p class="text-center text-red-500">Failed to load prompt</p>';
+            });
+    }
+
+    function renderVariables() {
+        if (currentVariables.length === 0) {
+            variablesContainer.innerHTML = '<p class="text-gray-500 text-sm">This prompt has no variables to fill in.</p>';
+        } else {
+            variablesContainer.innerHTML = currentVariables.map(function(v) {
+                return '<div>' +
+                    '<label class="block text-sm font-medium text-text-primary-light dark:text-text-primary-dark mb-1">' + formatLabel(v) + '</label>' +
+                    '<textarea class="w-full px-3 py-2 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded text-sm text-text-primary-light dark:text-text-primary-dark resize-y min-h-[60px]" data-var="' + v + '" placeholder="Enter ' + formatLabel(v).toLowerCase() + '..."></textarea>' +
+                '</div>';
+            }).join('');
+        }
+    }
+
+    function formatLabel(varName) {
+        return varName.replace(/_/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+    }
+
+    document.getElementById('pb-generate').addEventListener('click', function() {
+        var result = currentContent;
+        result = result.replace(/^---[\s\S]*?---\n*/m, '');
+        
+        variablesContainer.querySelectorAll('textarea').forEach(function(ta) {
+            var varName = ta.dataset.var;
+            var value = ta.value || '[' + varName + ']';
+            result = result.replace(new RegExp('\\{\\{\\s*' + varName + '\\s*\\}\\}', 'g'), value);
+        });
+
+        resultContainer.textContent = result.trim();
+        showStep(stepResult);
+    });
+
+    document.getElementById('pb-copy').addEventListener('click', function() {
+        var btn = document.getElementById('pb-copy');
+        navigator.clipboard.writeText(resultContainer.textContent)
+            .then(function() {
+                btn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Copied!</span>';
+                setTimeout(function() {
+                    btn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg><span>Copy</span>';
+                }, 2000);
+            })
+            .catch(function() {
+                btn.innerHTML = '<span>Failed</span>';
+            });
+    });
+
+    document.getElementById('pb-new').addEventListener('click', reset);
+
+    renderCategories();
+})();
+</script>

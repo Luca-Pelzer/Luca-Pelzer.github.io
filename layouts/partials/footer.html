@@ -1,0 +1,62 @@
+<!-- Footer -->
+<footer class="mt-32 text-center">
+    <div class="max-w-4xl mx-auto">
+        <div class="border-t border-border-primary-light dark:border-border-primary-dark pt-5">
+            <div class="flex flex-col items-center justify-center gap-2">
+                {{ $authorData := index site.Data .Language.Lang "author" }}                
+                {{ $author := cond (and $authorData $authorData.author) $authorData.author site.Params }}
+                {{ with $author }}
+                <p class="text-text-secondary-light dark:text-text-secondary-dark text-xm">© {{ now.Format "2006" }} engels.wtf</p>
+                
+                <!-- Social Links with RSS -->
+                <div class="flex items-center gap-4 py-2">
+                    <!-- GitHub -->
+                    <a href="{{ .github }}" target="_blank" class="text-text-secondary-light dark:text-text-secondary-dark hover:text-text-primary-light dark:hover:text-text-primary-dark transition-colors duration-300" title="GitHub">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    
+                    <!-- RSS Feed -->
+                    <a href="/blogs/index.xml" target="_blank" class="text-text-secondary-light dark:text-text-secondary-dark hover:text-orange-500 transition-colors duration-300" title="RSS Feed">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1Z"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 10px; margin-top: 0.5rem; padding-bottom: 2rem;">
+                    <span class="text-text-secondary-light dark:text-text-secondary-dark text-sm">We don't collect cookies!</span>
+                    <img src="data:image/gif;base64,R0lGODlhWAAfAHAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJEQAAACwAAAAAWAAfAIIAAAD/AAAAAAD///8AAP8A//8AAAAAAAAD/gi63P4wykmrvTjrzbv/WwCOJBCIJ3OupSK8sAsLrbqmZgDj4zv8gxdAAAzSaqedgscDEYtGaLCWW4iqy2vv5wtyn1Ok9srUOr9cNJfKzFrNnRkUXIyV2sObzikg+AuAgF0/gH4ERyN4eUk9hoGHfQKBhYaIIIpDQnyOBYaenJ6WHpqaVH2enZ+fqX6iVFYRcBGnqKqqrKWvsBBNs7a/tZUfsg/EMhW0wJAvtrkSTXoNcGM4LDYOyZUz29mtFNE5O2Q3u0lHAtDkC93L3DCqrtLmKWXhL9Xh8m/3Zt3u3PAmMMqEpUq9HHv0ZVEn49O/bQGfyap30JpCE9sa+HvIaixUvGsX6VFbgm7iGAkdlSn7CJJByRU0KvILaayhyl8sXeq58vKcniM8q6l7mdAlu5vOZt1AZMcFzF2LMjWdge2oyqYUqE7AaimpywdWb7byqitOWLFjy5I4i1aY2lFs23p7yyGu3EMAEgAAIfkECREAAAAsAAAAAFgAHwCCAAAA/wAAAAAA////AAD/AP//AAAAAAAAA/4Iutz+MMpJq7046827/1sAjiQQiCdzrqUivLALC626pmYA4+M7/IMXQAAM0mqnnYLHAxGLRmiwlluIqstr7+cLcp9TpPbK1Dq/XDSXysxazZ0ZFFyMldrDm84pIBAKgIFdP4B+BEcjeHlJPYZ/gC+HgYWGiCCKQ0J8jgWOno+Olh6amlR9nJ+ooVQQcCoWp6myfp1+paxWEU0RsbO+th+uD8IyFb2zM6m3Ek16DXBjOCw2Dse2M9jWhxTOOTtkN7neRwLN4Qva2dmfog4rLyll4+Vk3s/R8GbW6uue7ffkaMiTl2PPvTfnZPjjl8zfhF1YqhCcdnAJtgb7+Mla5mPO1cBoFiFiqpYx0q9/FRnQexdRWr6UEFVq+wWMwsppK8npOXKFXhacN9qZpLkQVlB0t3KKW5TJTlOhM09y5OWUqqWrKF08iEr00FRccbh29QqWhNixNcuGRUs0q1qbbNsCSAAAOw==" alt="Cookie Monster" style="width: 88px; height: 31px;">
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .animated-link {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+    }
+    
+    .animated-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: -1px;
+        left: 0;
+        background-color: #0284c7;
+        transition: width 0.3s ease-in-out;
+    }
+    
+    .animated-link:hover::after {
+        width: 100%;
+    }
+    html.dark .animated-link::after {
+        background-color: #0ea5e9;
+    }
+</style>

@@ -1,0 +1,53 @@
+{{/* BreadcrumbList JSON-LD Schema for SEO */}}
+{{- if not .IsHome -}}
+{{- $siteURL := .Site.BaseURL -}}
+{{- $breadcrumbs := slice -}}
+
+{{/* Build breadcrumb trail */}}
+{{- $position := 1 -}}
+
+{{/* Home is always first */}}
+{{- $home := dict "position" $position "name" .Site.Title "url" $siteURL -}}
+{{- $breadcrumbs = $breadcrumbs | append $home -}}
+
+{{/* Add section if this is a page within a section */}}
+{{- if and .Section (ne .Section "") -}}
+  {{- $position = add $position 1 -}}
+  {{- $sectionPage := .Site.GetPage "section" .Section -}}
+  {{- $sectionName := .Section | humanize | title -}}
+  {{- if $sectionPage -}}
+    {{- $sectionName = $sectionPage.Title -}}
+  {{- end -}}
+  {{- $sectionURL := printf "%s%s/" $siteURL .Section -}}
+  {{- $section := dict "position" $position "name" $sectionName "url" $sectionURL -}}
+  {{- $breadcrumbs = $breadcrumbs | append $section -}}
+{{- end -}}
+
+{{/* Add current page if it's not a list page */}}
+{{- if not .IsNode -}}
+  {{- $position = add $position 1 -}}
+  {{- $current := dict "position" $position "name" .Title "url" .Permalink -}}
+  {{- $breadcrumbs = $breadcrumbs | append $current -}}
+{{- end -}}
+
+{{/* Only output if we have more than just the home page */}}
+{{- if gt (len $breadcrumbs) 1 -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {{- range $index, $item := $breadcrumbs -}}
+    {{- if $index }},{{ end }}
+    {
+      "@type": "ListItem",
+      "position": {{ $item.position }},
+      "name": "{{ $item.name }}",
+      "item": "{{ $item.url }}"
+    }
+    {{- end }}
+  ]
+}
+</script>
+{{- end -}}
+{{- end -}}

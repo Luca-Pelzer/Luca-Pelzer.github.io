@@ -1,0 +1,39 @@
+{{/* hreflang tags for multi-language SEO */}}
+{{/* Generate hreflang tags for all language versions of this page */}}
+
+{{- $currentLang := .Language.Lang -}}
+{{- $currentPage := . -}}
+
+{{/* Always include the current page's language */}}
+<link rel="alternate" hreflang="{{ $currentLang }}" href="{{ .Permalink }}" />
+
+{{/* Include all translations */}}
+{{- range .Translations -}}
+<link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" />
+{{- end -}}
+
+{{/* For pages without translations, generate hreflang for all configured languages */}}
+{{- if not .Translations -}}
+  {{- range .Site.Languages -}}
+    {{- if ne .Lang $currentLang -}}
+      {{/* Link to the language root if no translation exists */}}
+      <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Lang | absLangURL }}" />
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* x-default points to the default language version */}}
+{{- $defaultLang := .Site.Language.Lang -}}
+{{- if .IsTranslated -}}
+  {{- range .AllTranslations -}}
+    {{- if eq .Language.Lang $defaultLang -}}
+<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}" />
+    {{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- if eq $currentLang $defaultLang -}}
+<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}" />
+  {{- else -}}
+<link rel="alternate" hreflang="x-default" href="{{ $defaultLang | absLangURL }}" />
+  {{- end -}}
+{{- end -}}

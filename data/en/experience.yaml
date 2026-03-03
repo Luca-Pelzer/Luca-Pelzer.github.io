@@ -1,0 +1,59 @@
+stats:
+  - number: "auto"
+    label: "Years Experience"
+  - number: "auto"
+    label: "Technologies Used"
+  - number: "auto"
+    label: "Projects Completed"
+  - number: "3+"
+    label: "Certifications"
+
+experience:
+  - role: "IT System Integration Apprentice"
+    company: "Professional Training"
+    company_link: ""
+    period: "September 2023 - Present"
+    country: "Germany"
+    responsibilities:
+      - "Learning enterprise IT infrastructure and systems administration"
+      - "Gaining hands-on experience with networking, servers, and technical support"
+      - "Working with system integration and IT service management"
+    technologies:
+      - "Windows Server"
+      - "Networking"
+      - "Linux"
+      - "IT Support"
+
+  - role: "AI Agent Developer"
+    company: "Personal Projects"
+    company_link: "#projects"
+    period: "2025 - Present"
+    country: "Germany"
+    responsibilities:
+      - "Building multi-agent AI systems with Claude Code and custom orchestration"
+      - "Implementing MCP servers for tool integration and LSP servers for code intelligence"
+      - "Developing AI-powered infrastructure management and automation workflows"
+      - "Experimenting with prompt engineering and agent behavior optimization"
+    technologies:
+      - "Claude"
+      - "OpenAI"
+      - "MCP"
+      - "Python"
+      - "n8n"
+
+  - role: "AI Infrastructure Engineer"
+    company: "Self-Hosted Lab"
+    company_link: "#projects"
+    period: "2025 - Present"
+    country: "Home"
+    responsibilities:
+      - "Running self-hosted AI workloads on Proxmox VE infrastructure"
+      - "Deploying local LLMs with Ollama for privacy-focused AI usage"
+      - "Building automated pipelines where AI agents manage server infrastructure"
+      - "Integrating AI tools with homelab services for intelligent automation"
+    technologies:
+      - "Proxmox"
+      - "Ollama"
+      - "Docker"
+      - "LXC"
+      - "Linux"
