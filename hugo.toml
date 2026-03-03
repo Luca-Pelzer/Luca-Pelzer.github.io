@@ -20,8 +20,8 @@ defaultContentLanguageInSubdir = false
       profile_image = "/images/profile.png"
       description = "Luca Pelzer's personal site. Exploring, building & running AI infrastructure - from agents to self-hosted models."
       location = "Germany"
-      github = "https://github.com/engelswtf"
-      github_username = "engelswtf"
+      github = "https://github.com/Luca-Pelzer"
+      github_username = "Luca-Pelzer"
       discord = "262327058317836300"
     [languages.en.menu]
       [[languages.en.menu.main]]
@@ -58,8 +58,8 @@ defaultContentLanguageInSubdir = false
       profile_image = "/images/profile.png"
       description = "Luca Pelzers persönliche Seite. KI-Infrastruktur erkunden, bauen & betreiben - von Agenten bis zu selbst gehosteten Modellen."
       location = "Deutschland"
-      github = "https://github.com/engelswtf"
-      github_username = "engelswtf"
+      github = "https://github.com/Luca-Pelzer"
+      github_username = "Luca-Pelzer"
       discord = "262327058317836300"
     [languages.de.menu]
       [[languages.de.menu.main]]
@@ -96,8 +96,8 @@ defaultContentLanguageInSubdir = false
       profile_image = "/images/profile.png"
       description = "Sitio personal de Luca Pelzer. Explorando, construyendo y ejecutando infraestructura de IA - desde agentes hasta modelos autoalojados."
       location = "Alemania"
-      github = "https://github.com/engelswtf"
-      github_username = "engelswtf"
+      github = "https://github.com/Luca-Pelzer"
+      github_username = "Luca-Pelzer"
       discord = "262327058317836300"
     [languages.es.menu]
       [[languages.es.menu.main]]
@@ -136,8 +136,8 @@ defaultContentLanguageInSubdir = false
   profile_image = "/images/profile.png"
   description = "Luca Pelzer's personal site. Exploring, building & running AI infrastructure - from agents to self-hosted models."
   location = "Germany"
-  github = "https://github.com/engelswtf"
-  github_username = "engelswtf"
+  github = "https://github.com/Luca-Pelzer"
+  github_username = "Luca-Pelzer"
   discord = "262327058317836300"
 
 # Sitemap configuration
