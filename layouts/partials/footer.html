@@ -6,7 +6,7 @@
                 {{ $authorData := index site.Data .Language.Lang "author" }}                
                 {{ $author := cond (and $authorData $authorData.author) $authorData.author site.Params }}
                 {{ with $author }}
-                <p class="text-text-secondary-light dark:text-text-secondary-dark text-xm">© {{ now.Format "2006" }} engels.wtf</p>
+                <p class="text-text-secondary-light dark:text-text-secondary-dark text-xm">© {{ now.Format "2006" }} luca-pelzer.github.io</p>
                 
                 <!-- Social Links with RSS -->
                 <div class="flex items-center gap-4 py-2">
