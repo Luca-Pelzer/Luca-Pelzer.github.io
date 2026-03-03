@@ -73,9 +73,9 @@ blogs:
       - stalwart
       - self-hosting
       - proxmox
-  - title: "Warum ich engels.wtf gebaut habe: Mehr als nur ein weiterer Tech-Blog"
+  - title: "Warum ich meine persönliche Seite gebaut habe: Mehr als nur ein weiterer Tech-Blog"
     date: "December 10, 2025"
-    link: "/blogs/why-i-built-engels-wtf/"
+    link: "/blogs/why-i-built-my-personal-site/"
     summary: "Warum ich meinen eigenen Blog von Grund auf gebaut habe, wie er in meinem Homelab eingerichtet ist und warum Bloggen das beste Wissensmanagement-System ist, das ich gefunden habe."
     tags:
       - meta

@@ -73,9 +73,9 @@ blogs:
       - stalwart
       - self-hosting
       - proxmox
-  - title: "Why I Built engels.wtf: More Than Just Another Tech Blog"
+  - title: "Why I Built My Personal Site: More Than Just Another Tech Blog"
     date: "December 10, 2025"
-    link: "/blogs/why-i-built-engels-wtf/"
+    link: "/blogs/why-i-built-my-personal-site/"
     summary: "Why I built my own blog from scratch, how it's set up in my homelab, and why blogging is the best knowledge management system I've found."
     tags:
       - meta

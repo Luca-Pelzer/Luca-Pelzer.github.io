@@ -1,5 +1,5 @@
 ---
-title: "Why I Built engels.wtf: More Than Just Another Tech Blog"
+title: "Why I Built My Personal Site: More Than Just Another Tech Blog"
 date: 2025-12-10
 draft: false
 tags: ["meta", "blogging", "homelab", "self-hosting", "hugo", "documentation"]
@@ -7,7 +7,7 @@ categories: ["Meta", "Homelab"]
 description: "Why I built my own blog from scratch, how it's set up in my homelab, and why blogging is the best knowledge management system I've found."
 ---
 
-# Why I Built engels.wtf: More Than Just Another Tech Blog
+# Why I Built My Personal Site: More Than Just Another Tech Blog
 
 **TL;DR**: I built my own blog using Hugo, running in an LXC container on Proxmox, with Flatnotes as my writing companion. It's not just about sharing knowledge—it's about building a personal knowledge base that actually sticks in my brain.
 
@@ -110,7 +110,7 @@ WorkingDirectory=/var/www/engels-blog
 ExecStart=/usr/local/bin/hugo server \
   --bind 0.0.0.0 \
   --port 1313 \
-  --baseURL https://www.engels.wtf \
+  --baseURL https://engelswtf.github.io \
   --appendPort=false \
   --environment production \
   --disableLiveReload
@@ -142,7 +142,7 @@ www.engels.wtf {
 }
 
 engels.wtf {
-    redir https://www.engels.wtf{uri} permanent
+    redir https://engelswtf.github.io{uri} permanent
 }
 ```
 

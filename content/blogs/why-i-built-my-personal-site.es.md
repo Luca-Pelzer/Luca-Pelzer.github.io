@@ -1,5 +1,5 @@
 ---
-title: "Por qué construí engels.wtf: Más que otro blog técnico"
+title: "Por qué construí mi sitio personal: Más que otro blog técnico"
 date: 2025-12-10
 draft: false
 tags: ["meta", "blogging", "homelab", "self-hosting", "hugo", "documentación"]
@@ -7,7 +7,7 @@ categories: ["Meta", "Homelab"]
 description: "Por qué construí mi propio blog desde cero, cómo está configurado en mi homelab y por qué bloguear es el mejor sistema de gestión del conocimiento que he encontrado."
 ---
 
-# Por qué construí engels.wtf: Más que otro blog técnico
+# Por qué construí mi sitio personal: Más que otro blog técnico
 
 **TL;DR**: Construí mi propio blog usando Hugo, corriendo en un contenedor LXC en Proxmox, con Flatnotes como compañero de escritura. No se trata solo de compartir conocimiento—se trata de construir una base de conocimiento personal que realmente se quede en el cerebro.
 
@@ -110,7 +110,7 @@ WorkingDirectory=/var/www/engels-blog
 ExecStart=/usr/local/bin/hugo server \
   --bind 0.0.0.0 \
   --port 1313 \
-  --baseURL https://www.engels.wtf \
+  --baseURL https://engelswtf.github.io \
   --appendPort=false \
   --environment production \
   --disableLiveReload
@@ -142,7 +142,7 @@ www.engels.wtf {
 }
 
 engels.wtf {
-    redir https://www.engels.wtf{uri} permanent
+    redir https://engelswtf.github.io{uri} permanent
 }
 ```
 

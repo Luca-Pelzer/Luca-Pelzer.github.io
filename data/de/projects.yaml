@@ -27,4 +27,4 @@ projects:
     description: "Ein selbst gehosteter Blog mit Hugo und einem benutzerdefinierten Dark Theme, mit webbasiertem Markdown-Editor und automatischen Site-Rebuilds bei Inhaltsänderungen."
     tech: "Hugo, Caddy, Docker, Markdown"
     image: "/images/projects/blog.svg"
-    link: "https://www.engels.wtf"
+    link: "https://engelswtf.github.io"

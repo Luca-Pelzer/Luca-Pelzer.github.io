@@ -6,7 +6,7 @@ description: "This blog! Built with Hugo and the Hugo Noir theme, featuring a we
 tags: ["Hugo", "Caddy", "Docker", "Flatnotes"]
 image: "/images/projects/blog.svg"
 github: ""
-demo: "https://www.engels.wtf"
+demo: "https://engelswtf.github.io"
 featured: true
 weight: 2
 ---
